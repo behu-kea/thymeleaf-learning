@@ -12,6 +12,8 @@ import java.util.List;
 
 @Controller
 public class UserRouter {
+    private Users users = new Users();
+
     @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
     @ResponseBody
     public String signUp() {
@@ -26,14 +28,13 @@ public class UserRouter {
     @ResponseBody
     public String createNewUser(@RequestParam("name") String name, @RequestParam("age") int age) {
         User user = new User(name, age);
+        users.addUser(user);
         return "User created with name: " + user.getName() + " and age: " + user.getAge();
     }
 
-    @RequestMapping(value = "/get-users", method = RequestMethod.GET)
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     @ResponseBody
     public String getUsers() {
-        Users users = new Users();
-
-        return users.getUsers();
+        return users.getRenderedUsers();
     }
 }
