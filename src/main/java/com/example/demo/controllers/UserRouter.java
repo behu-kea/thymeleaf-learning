@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import com.example.demo.models.User;
 import com.example.demo.models.Users;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,12 @@ public class UserRouter {
                 "            <input name=\"age\" placeholder=\"Put in your age\" type=\"text\">\n" +
                 "            <button>Create new user</button>\n" +
                 "        </form>";
+    }
+
+    @RequestMapping(value = "/sign-up-template", method = RequestMethod.GET)
+    public String signUpTemplate(Model model) {
+        model.addAttribute("attr", "attr");
+        return "create-new-user-form";
     }
 
     @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
