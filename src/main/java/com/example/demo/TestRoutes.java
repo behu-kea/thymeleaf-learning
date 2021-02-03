@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class HelloWorld {
+public class TestRoutes {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     String home() {
@@ -19,15 +19,15 @@ public class HelloWorld {
         return "hello world";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/test")
     @ResponseBody
-    public String test() {
+    private String test() {
         return "test";
     }
 
     @GetMapping("/create-new-user")
     @ResponseBody
-    public String createNewUserRender() {
+    private String createNewUserRender() {
         return "<form action=\"/create-new-user\" method=\"POST\">\n" +
                 "            <input name=\"name\" placeholder=\"Put in your name\" type=\"text\">\n" +
                 "            <input name=\"age\" placeholder=\"Put in your age\" type=\"text\">\n" +
@@ -37,7 +37,7 @@ public class HelloWorld {
 
     @RequestMapping(value = "create-new-user",method = RequestMethod.POST)
     @ResponseBody
-    public String createNewUser(@RequestParam("name") String name, @RequestParam("age") String age) {
+    private String createNewUser(@RequestParam("name") String name, @RequestParam("age") String age) {
         return "User created with name: " + name + " and age: " + age;
     }
 }
