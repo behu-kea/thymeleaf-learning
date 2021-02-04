@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlnd="http://thymeleaf.org">
+<head th:replace="products/fragments/header.html :: terrible(title='We have great products. Truly')"></head>
+<body>
+<main>
+    <section class="create-new-user">
+        <h1 th:text="${pageTitle}"></h1>
+
+        <ul th:each="product : ${products}">
+            <li>
+                <p th:text="${product.name}"></p>
+                <p th:text="${product.price}"></p>
+            </li>
+        </ul>
+    </section>
+</main>
+</body>
+</html>
