@@ -13,6 +13,12 @@
             </li>
         </ul>
     </section>
+    <div th:if="${loggedIn}">
+        <div>Welcome, Guest</div>
+    </div>
+    <div th:if="${loggedIn==false}">
+        <div>Welcome, lol</div>
+    </div>
 </main>
 </body>
 </html>

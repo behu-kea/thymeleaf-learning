@@ -31,6 +31,7 @@ public class Product {
         products.add(mobile);
 
         model.addAttribute("pageTitle", "Buy awesome products");
+        model.addAttribute("loggedIn", false);
         model.addAttribute("products", products);
         return "products/product-variables";
     }
