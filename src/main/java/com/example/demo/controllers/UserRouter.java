@@ -4,10 +4,7 @@ import com.example.demo.models.User;
 import com.example.demo.models.Users;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,7 +28,17 @@ public class UserRouter {
         return "create-new-user-form";
     }
 
+    /*
     @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+    @ResponseBody
+    public String createNewUser(@RequestParam("name") String name, @RequestParam("age") int age) {
+        User user = new User(name, age);
+        users.addUser(user);
+        return "User created with name: " + user.getName() + " and age: " + user.getAge();
+    }
+     */
+
+    @PostMapping(value = "/sign-up")
     @ResponseBody
     public String createNewUser(@RequestParam("name") String name, @RequestParam("age") int age) {
         User user = new User(name, age);

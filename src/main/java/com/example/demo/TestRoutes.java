@@ -1,7 +1,11 @@
 package com.example.demo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,20 +23,10 @@ public class TestRoutes {
         return "hello world";
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test/{id}")
     @ResponseBody
-    private String test() {
-        return "test";
-    }
-
-    @GetMapping("/create-new-user")
-    @ResponseBody
-    private String createNewUserRender() {
-        return "<form action=\"/create-new-user\" method=\"POST\">\n" +
-                "            <input name=\"name\" placeholder=\"Put in your name\" type=\"text\">\n" +
-                "            <input name=\"age\" placeholder=\"Put in your age\" type=\"text\">\n" +
-                "            <button>Create new user</button>\n" +
-                "        </form>";
+    private String test(@PathVariable String id, @RequestParam String name) {
+        return "test" + id + name;
     }
 
     @RequestMapping(value = "create-new-user",method = RequestMethod.POST)
@@ -40,4 +34,5 @@ public class TestRoutes {
     private String createNewUser(@RequestParam("name") String name, @RequestParam("age") String age) {
         return "User created with name: " + name + " and age: " + age;
     }
+
 }
