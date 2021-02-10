@@ -36,7 +36,6 @@ public class OrderController {
         if (messages == null) {
             messages = new ArrayList<>();
         }
-        System.out.println(messages);
         model.addAttribute("notesSession", messages);
 
         return "orders/orders";
